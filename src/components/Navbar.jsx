@@ -1,6 +1,9 @@
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      className="navbar navbar-expand-lg bg-body-tertiary"
+      style={{ position: "fixed", top: 0, width: "100%", zIndex: 9999 }}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Navbar
