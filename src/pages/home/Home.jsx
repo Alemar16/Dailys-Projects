@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import image1 from "../../assets/images/bootstrap-themes.png";
 import imageCard1 from "../../assets/images/images-practice/image1.jpeg";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleGoToExtensiveCards = () => {
+    navigate("/extensive-cards");
+  }
   return (
     <div>
       <h1 className="visually-hidden">Heroes examples</h1>
@@ -74,9 +80,6 @@ const Home = () => {
                     >
                       <title>Placeholder</title>
                       <rect width="100%" height="100%" fill="#55595c" />
-                      {/* <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                        Thumbnail
-                      </text> */}
                       <image
                         href={imageCard1}
                         width="100%"
@@ -95,6 +98,7 @@ const Home = () => {
                           <button
                             type="button"
                             className="btn btn-sm btn-outline-secondary"
+                            onClick={handleGoToExtensiveCards}
                           >
                             View
                           </button>
