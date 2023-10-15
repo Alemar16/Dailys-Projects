@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -82,6 +80,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
