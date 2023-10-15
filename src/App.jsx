@@ -3,6 +3,7 @@ import Home from "./pages/home/Home.jsx";
 import Navbar from "./components/navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import ExtensiveCards from "../src/Practice-Components/Extensive-Cards/React/ExtensiveCards.jsx";
+import "./App.css";
 
 function App() {
   return (
