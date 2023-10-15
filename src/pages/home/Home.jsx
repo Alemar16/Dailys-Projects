@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import image1 from "../../assets/images/bootstrap-themes.png";
 import imageCard1 from "../../assets/images/images-practice/image1.jpeg";
+import "./Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -63,7 +64,9 @@ const Home = () => {
             </div>
           </section>
 
-          <div className="album py-5 bg-body-tertiary">
+          <div
+            className="album "
+          >
             <div className="container">
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div className="col">
