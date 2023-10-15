@@ -1,0 +1,14 @@
+.album {
+  background: rgba(255, 255, 255, 0.356);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 12px;
+  border: 1px RGBA sólido (255, 255, 213, 0.3209219);
+  padding: 50px;
+}
+
