@@ -45,74 +45,83 @@ const ExtensiveCards = () => {
 
   return (
     <div className="container-component">
-      <Link to="/" className="btn btn-primary m-5">
+      <Link to="/" className="btn btn-secondary m-2 ">
         Return
       </Link>
-      <h1 className="title mt-2 mb-5 text-center fw-bold text-body-emphasis">
+      <h1 className="title text-center fw-bold text-body-emphasis">
         Extensive Cards Model
       </h1>
 
-      <div className="container mt-5 mb-5">
+      <div className="container  mt-2 mb-5 d-flex flex-wrap">
         <div
           className="panel active"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')",
+              "url('https://images7.alphacoders.com/133/thumbbig-1332876.webp')",
           }}
         >
-          <h3>Explore The World</h3>
+          <h3>A cup of coffee</h3>
         </div>
         <div
           className="panel"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')",
+              "url('https://images2.alphacoders.com/433/thumbbig-43350.webp')",
           }}
         >
-          <h3>Wild Forest</h3>
+          <h3>Chocolate and Roses</h3>
         </div>
         <div
           className="panel"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80')",
+              "url('https://images8.alphacoders.com/132/thumbbig-1325359.webp')",
           }}
         >
-          <h3>Sunny Beach</h3>
+          <h3>Chocolate Chip Cookies</h3>
         </div>
         <div
           className="panel"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80')",
+              "url('https://images8.alphacoders.com/132/thumbbig-1326922.webp')",
           }}
         >
-          <h3>City on Winter</h3>
+          <h3>Strawberry Cake</h3>
         </div>
         <div
           className="panel"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')",
+              "url('https://images6.alphacoders.com/132/thumbbig-1323968.webp')",
           }}
         >
-          <h3>Mountains - Clouds</h3>
+          <h3> Wine Grapes And Cheese</h3>
         </div>
       </div>
       <div
-        className="container row m-5 border"
-        style={{ width: "100%", height: "400px" }}
+        className="container-code row d-flex justify-content-center align-items-center mb-5"
+        style={{
+          width: "95%",
+          height:
+            isReactJSOptionSelected || isBasicApplicationOptionSelected
+              ? "auto"
+              : "350px",
+          margin: "0 2rem",
+          padding: "1rem",
+          
+        }}
       >
         <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
           <h2 className="title text-center fw-bold mt-3">Component Code</h2>
-          <div className="btn-group mt-2">
+          <div className="btn-group mt-2" style={{ position: "static" }}>
             <button
               type="button"
               className="btn btn-secondary dropdown-toggle"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Dropend
+              Select
             </button>
             <ul className="dropdown-menu">
               <li>
@@ -137,21 +146,75 @@ const ExtensiveCards = () => {
 
         {isReactJSOptionSelected && (
           <div
-            className="col-md-6 code-container mt-4 rounded rounded-3"
-            style={{ width: "50%", height: "350px", overflowY: "auto" }}
+            className="col-md-6 code-container mt-5"
+            style={{ width: "100%", height: "auto" }}
           >
             <AccordionReact />
           </div>
         )}
         {isBasicApplicationOptionSelected && (
           <div
-            className="col-md-6 code-container mt-4 rounded rounded-3"
-            style={{ width: "50%", height: "350px", overflowY: "auto" }}
+            className="col-md-6 code-container mt-4"
+            style={{ width: "100%", height: "auto" }}
           >
             <AccordionBasic />
           </div>
         )}
       </div>
+
+      {/* <div
+        className="container-code row d-flex justify-content-center align-items-center mb-5"
+        style={{ width: "95%", height: "350px", margin: "0 2rem" }}
+      >
+        <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <h2 className="title text-center fw-bold mt-3">Component Code</h2>
+          <div className="btn-group mt-2">
+            <button
+              type="button"
+              className="btn btn-secondary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Select
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <a
+                  className="dropdown-item"
+                  onClick={() => handleOptionSelect("React JS")}
+                >
+                  React JS
+                </a>
+              </li>
+              <li>
+                <a
+                  className="dropdown-item"
+                  onClick={() => handleOptionSelect("Basic Application")}
+                >
+                  Basic Application
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {isReactJSOptionSelected && (
+          <div
+            className="col-md-6 code-container mt-5 "
+            style={{ width: "70%", height: "350px" }}
+          >
+            <AccordionReact />
+          </div>
+        )}
+        {isBasicApplicationOptionSelected && (
+          <div
+            className="col-md-6 code-container mt-4 "
+            style={{ width: "70%", height: "350px" }}
+          >
+            <AccordionBasic />
+          </div>
+        )}
+      </div> */}
     </div>
   );
 };
