@@ -4,6 +4,12 @@ import "./style.css";
 const ExtensiveCardsViews = () => {
   useEffect(() => {
     const panels = document.querySelectorAll(".panel");
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => {
+      return new window.bootstrap.Tooltip(tooltipTriggerEl);
+    });
 
     const handleClick = (event) => {
       const panel = event.currentTarget;
@@ -21,9 +27,15 @@ const ExtensiveCardsViews = () => {
       panel.addEventListener("click", handleClick);
     });
 
+    // Función de retorno del useEffect
     return () => {
       panels.forEach((panel) => {
         panel.removeEventListener("click", handleClick);
+      });
+
+      // Eliminar todos los tooltips activos
+      tooltipList.forEach((tooltip) => {
+        tooltip.dispose();
       });
     };
   }, []);
@@ -35,7 +47,14 @@ const ExtensiveCardsViews = () => {
   return (
     <div className="container-component">
       <div className="d-flex justify-content-end m-4">
-        <button className="btn-return" onClick={handleReturn} title="Return">
+        <button
+          className="btn-return"
+          onClick={handleReturn}
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          data-bs-original-title="Return"
+          data-bs-custom-class="custom-tooltip-class"
+        >
           <i className="bi bi-arrow-return-left"></i>
         </button>
       </div>
