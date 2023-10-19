@@ -19,6 +19,12 @@ const ExtensiveCards = () => {
 
   useEffect(() => {
     const panels = document.querySelectorAll(".panel");
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => {
+      return new window.bootstrap.Tooltip(tooltipTriggerEl);
+    });
 
     const handleClick = (event) => {
       const panel = event.currentTarget;
@@ -36,9 +42,15 @@ const ExtensiveCards = () => {
       panel.addEventListener("click", handleClick);
     });
 
+    // Función de retorno del useEffect
     return () => {
       panels.forEach((panel) => {
         panel.removeEventListener("click", handleClick);
+      });
+
+      // Eliminar todos los tooltips activos
+      tooltipList.forEach((tooltip) => {
+        tooltip.dispose();
       });
     };
   }, []);
@@ -46,10 +58,26 @@ const ExtensiveCards = () => {
   return (
     <div className="container-component">
       <div className="d-flex justify-content-end m-4">
-        <Link to="/extensive-cards-views" className="btn btn-secondary m-2 " title="View Component">
+        <Link
+          to="/extensive-cards-views"
+          className="btn btn-secondary m-2 "
+          
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          data-bs-original-title="View"
+          data-bs-custom-class="custom-tooltip-class"
+        >
           <i className="bi bi-eye"></i>
         </Link>
-        <Link to="/" className="btn btn-secondary m-2 " title="Return">
+        <Link
+          to="/"
+          className="btn btn-secondary m-2 "
+         
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          data-bs-original-title="Return"
+          data-bs-custom-class="custom-tooltip-class"
+        >
           <i className="bi bi-arrow-return-left"></i>
         </Link>
       </div>
