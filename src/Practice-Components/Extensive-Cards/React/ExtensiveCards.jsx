@@ -3,6 +3,10 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import AccordionReact from "./Accordion/Accordion-React/AccordionReact";
 import AccordionBasic from "./Accordion/Accordion-Basic/AccordionBasic";
+import imageHtml from "../../../assets/icons/html.png";
+import imageCss from "../../../assets/icons/css.png";
+import imageJavaScript from "../../../assets/icons/js.png";
+import imageReact from "../../../assets/icons/react.svg";
 
 const ExtensiveCards = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -61,7 +65,6 @@ const ExtensiveCards = () => {
         <Link
           to="/extensive-cards-views"
           className="btn btn-secondary m-2 "
-          
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           data-bs-original-title="View"
@@ -72,7 +75,6 @@ const ExtensiveCards = () => {
         <Link
           to="/"
           className="btn btn-secondary m-2 "
-         
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           data-bs-original-title="Return"
@@ -145,45 +147,68 @@ const ExtensiveCards = () => {
           padding: "1rem",
         }}
       >
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
-          <h2 className="title text-left fw-bold">Description:</h2>
-          <p className="">
-            The React component ExtensiveCards implements a card design with
-            smooth click transitions, managed through useEffect. It uses
-            Bootstrap 5 to structure the layout and apply responsive styles. The
-            cards feature images and titles, while the CSS style defines the
-            visual presentation and size transitions. The use of the Montserrat
-            Alternates font library from Google Fonts adds an elegant and
-            distinctive typography to the component.
-          </p>
-          <h2 className="title text-center fw-bold mt-3">Component Code</h2>
-          <div className="btn-group mt-2" style={{ position: "static" }}>
-            <button
-              type="button"
-              className="btn btn-secondary dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Select
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <a
-                  className="dropdown-item"
-                  onClick={() => handleOptionSelect("React JS")}
-                >
-                  React JS
-                </a>
-              </li>
-              <li>
-                <a
-                  className="dropdown-item"
-                  onClick={() => handleOptionSelect("Basic Application")}
-                >
-                  Basic Application
-                </a>
-              </li>
-            </ul>
+        <div className="row">
+          <div className="col-md-6 d-flex flex-column justify-content-start align-items-center">
+            <div className="d-flex flex-column align-items-start">
+              <h2 className="title text-left fw-bold">Description:</h2>
+              <p className="">
+                The React component ExtensiveCards implements a card design with
+                smooth click transitions, managed through useEffect. It uses
+                Bootstrap 5 to structure the layout and apply responsive styles.
+                The cards feature images and titles, while the CSS style defines
+                the visual presentation and size transitions. The use of the
+                Montserrat Alternates font library from Google Fonts adds an
+                elegant and distinctive typography to the component.
+              </p>
+            </div>
+
+            <div className="d-flex align-items-center mt-2 gap-2">
+              <img src={imageHtml} alt="Logo-html" width={40} height={40} />
+              <img src={imageCss} alt="Logo-css" width={40} height={40} />
+              <img src={imageJavaScript} alt="Logo-js" width={40} height={40} />
+              <img src={imageReact} alt="Logo-react" width={40} height={40} />
+            </div>
+          </div>
+
+          <div
+            className="col-md-6 d-flex flex-column justify-content-start align-items-center  rounded shadow p-3 mt-3 mb-3 ms-auto"
+            style={{
+              width: "24em",
+              background: "linear-gradient(90deg, #edc0bf 0, #c4caef 58%)",
+            }}
+          >
+            <h2 className="title-code text-center fw-bold mt-4">
+              Use Code <br />
+              {"</> "}
+            </h2>
+            <div className="btn-group mt-2" style={{ position: "static" }}>
+              <button
+                type="button"
+                className="btn btn-secondary dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Select
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleOptionSelect("React JS")}
+                  >
+                    React JS
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleOptionSelect("Basic Application")}
+                  >
+                    Basic Application
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
