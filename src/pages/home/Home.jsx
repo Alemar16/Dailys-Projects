@@ -1,14 +1,34 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import image1 from "../../assets/images/bootstrap-themes.png";
 import imageCard1 from "../../assets/images/images-practice/image1.png";
 import "./Home.css";
+import imageHtml from "../../assets/icons/html.png";
+import imageCss from "../../assets/icons/css.png";
+import imageJavaScript from "../../assets/icons/js.png";
+import imageReact from "../../assets/icons/react.svg";
 
 const Home = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => {
+      return new window.bootstrap.Tooltip(tooltipTriggerEl);
+    });
+    return () => {
+      // Eliminar todos los tooltips activos
+      tooltipList.forEach((tooltip) => {
+        tooltip.dispose();
+      });
+    };
+  }, []);
+
   const handleGoToExtensiveCards = () => {
     navigate("/extensive-cards");
-  }
+  };
 
   const handleGoToExtensiveCardsView = () => {
     navigate("/extensive-cards-views");
@@ -47,24 +67,93 @@ const Home = () => {
         </div>
 
         <div className="album row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-5">
-          
           <div className="col p-0 mt-0 rounded">
             <div className="card shadow-sm ">
-              <img
-                className="bd-placeholder-img card-img-top rounded-top"
-                src={imageCard1}
-                width="100%"
-                height="100%"
-              />
+              <div className="image-container">
+                <img
+                  className="bd-placeholder-img card-img-top rounded-top"
+                  src={imageCard1}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
 
               <div className="card-body">
                 <h4 className="card-title fw-bold shadow py-2 rounded">
                   Extensive Cards
                 </h4>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                <p className="card-text" style={{ fontSize: "14px" }}>
+                  ExtensiveCards is a React component, click transitions via
+                  useEffect. It showcases image and title cards, stylized with
+                  CSS and Bootstrap 5.
+                </p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <div className="btn-group">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-secondary"
+                      onClick={handleGoToExtensiveCards}
+                    >
+                      Info
+                    </button>
+
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-secondary"
+                      onClick={handleGoToExtensiveCardsView}
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-original-title="View"
+                      data-bs-custom-class="custom-tooltip-class"
+                    >
+                      <i className="bi bi-eye"></i>
+                    </button>
+                  </div>
+                  <div>
+                    <img
+                      src={imageHtml}
+                      alt="Logo-html"
+                      width={20}
+                      height={20}
+                    />
+                    <img src={imageCss} alt="Logo-css" width={20} height={20} />
+                    <img
+                      src={imageJavaScript}
+                      alt="Logo-js"
+                      width={20}
+                      height={20}
+                    />
+                    <img
+                      src={imageReact}
+                      alt="Logo-react"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col p-0 mt-0 rounded">
+            <div className="card shadow-sm ">
+              <div className="image-container">
+                <img
+                  className="bd-placeholder-img card-img-top rounded-top"
+                  src={imageCard1}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+
+              <div className="card-body">
+                <h4 className="card-title fw-bold shadow py-2 rounded">
+                  Extensive Cards
+                </h4>
+                <p className="card-text" style={{ fontSize: "14px" }}>
+                  ExtensiveCards is a React component, click transitions via
+                  useEffect. It showcases image and title cards, stylized with
+                  CSS and Bootstrap 5.
                 </p>
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="btn-group">
@@ -84,7 +173,27 @@ const Home = () => {
                       View
                     </button>
                   </div>
-                  <small className="text-body-secondary">9 mins</small>
+                  <div>
+                    <img
+                      src={imageHtml}
+                      alt="Logo-html"
+                      width={20}
+                      height={20}
+                    />
+                    <img src={imageCss} alt="Logo-css" width={20} height={20} />
+                    <img
+                      src={imageJavaScript}
+                      alt="Logo-js"
+                      width={20}
+                      height={20}
+                    />
+                    <img
+                      src={imageReact}
+                      alt="Logo-react"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,21 +201,23 @@ const Home = () => {
 
           <div className="col p-0 mt-0 rounded">
             <div className="card shadow-sm ">
-              <img
-                className="bd-placeholder-img card-img-top rounded-top"
-                src={imageCard1}
-                width="100%"
-                height="100%"
-              />
+              <div className="image-container">
+                <img
+                  className="bd-placeholder-img card-img-top rounded-top"
+                  src={imageCard1}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
 
               <div className="card-body">
                 <h4 className="card-title fw-bold shadow py-2 rounded">
                   Extensive Cards
                 </h4>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                <p className="card-text" style={{ fontSize: "14px" }}>
+                  ExtensiveCards is a React component, click transitions via
+                  useEffect. It showcases image and title cards, stylized with
+                  CSS and Bootstrap 5.
                 </p>
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="btn-group">
@@ -115,58 +226,38 @@ const Home = () => {
                       className="btn btn-sm btn-outline-secondary"
                       onClick={handleGoToExtensiveCards}
                     >
-                      View
+                      Info
                     </button>
 
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small className="text-body-secondary">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col p-0 mt-0 rounded">
-            <div className="card shadow-sm ">
-              <img
-                className="bd-placeholder-img card-img-top rounded-top"
-                src={imageCard1}
-                width="100%"
-                height="100%"
-              />
-
-              <div className="card-body">
-                <h4 className="card-title fw-bold shadow py-2 rounded">
-                  Extensive Cards
-                </h4>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="btn-group">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                      onClick={handleGoToExtensiveCards}
+                      onClick={handleGoToExtensiveCardsView}
                     >
                       View
                     </button>
-
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
                   </div>
-                  <small className="text-body-secondary">9 mins</small>
+                  <div>
+                    <img
+                      src={imageHtml}
+                      alt="Logo-html"
+                      width={20}
+                      height={20}
+                    />
+                    <img src={imageCss} alt="Logo-css" width={20} height={20} />
+                    <img
+                      src={imageJavaScript}
+                      alt="Logo-js"
+                      width={20}
+                      height={20}
+                    />
+                    <img
+                      src={imageReact}
+                      alt="Logo-react"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
