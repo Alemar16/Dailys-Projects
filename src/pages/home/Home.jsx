@@ -9,6 +9,10 @@ const Home = () => {
   const handleGoToExtensiveCards = () => {
     navigate("/extensive-cards");
   }
+
+  const handleGoToExtensiveCardsView = () => {
+    navigate("/extensive-cards-views");
+  };
   return (
     <div>
       <h1 className="visually-hidden">Heroes examples</h1>
@@ -43,6 +47,7 @@ const Home = () => {
         </div>
 
         <div className="album row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-5">
+          
           <div className="col p-0 mt-0 rounded">
             <div className="card shadow-sm ">
               <img
@@ -68,14 +73,15 @@ const Home = () => {
                       className="btn btn-sm btn-outline-secondary"
                       onClick={handleGoToExtensiveCards}
                     >
-                      View
+                      Info
                     </button>
 
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
+                      onClick={handleGoToExtensiveCardsView}
                     >
-                      Edit
+                      View
                     </button>
                   </div>
                   <small className="text-body-secondary">9 mins</small>
