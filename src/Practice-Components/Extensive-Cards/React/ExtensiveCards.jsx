@@ -45,10 +45,16 @@ const ExtensiveCards = () => {
 
   return (
     <div className="container-component">
-      <Link to="/" className="btn btn-secondary m-2 ">
-        Return
-      </Link>
-      <h1 className="title text-center fw-bold text-body-emphasis">
+      <div className="d-flex justify-content-end m-4">
+        <Link to="/extensive-cards-views" className="btn btn-secondary m-2 " title="View Component">
+          <i className="bi bi-eye"></i>
+        </Link>
+        <Link to="/" className="btn btn-secondary m-2 " title="Return">
+          <i className="bi bi-arrow-return-left"></i>
+        </Link>
+      </div>
+
+      <h1 className="title text-center fw-bold text-body-emphasis mb-4">
         Extensive Cards Model
       </h1>
 
@@ -109,10 +115,19 @@ const ExtensiveCards = () => {
               : "350px",
           margin: "0 2rem",
           padding: "1rem",
-          
         }}
       >
         <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <h2 className="title text-left fw-bold">Description:</h2>
+          <p className="">
+            The React component ExtensiveCards implements a card design with
+            smooth click transitions, managed through useEffect. It uses
+            Bootstrap 5 to structure the layout and apply responsive styles. The
+            cards feature images and titles, while the CSS style defines the
+            visual presentation and size transitions. The use of the Montserrat
+            Alternates font library from Google Fonts adds an elegant and
+            distinctive typography to the component.
+          </p>
           <h2 className="title text-center fw-bold mt-3">Component Code</h2>
           <div className="btn-group mt-2" style={{ position: "static" }}>
             <button
