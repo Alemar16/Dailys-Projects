@@ -169,8 +169,12 @@ const Home = () => {
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
                       onClick={handleGoToExtensiveCardsView}
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-original-title="View"
+                      data-bs-custom-class="custom-tooltip-class"
                     >
-                      View
+                      <i className="bi bi-eye"></i>
                     </button>
                   </div>
                   <div>
@@ -233,8 +237,12 @@ const Home = () => {
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
                       onClick={handleGoToExtensiveCardsView}
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      data-bs-original-title="View"
+                      data-bs-custom-class="custom-tooltip-class"
                     >
-                      View
+                      <i className="bi bi-eye"></i>
                     </button>
                   </div>
                   <div>
