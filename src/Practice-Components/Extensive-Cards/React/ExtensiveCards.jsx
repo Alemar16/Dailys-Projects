@@ -214,75 +214,21 @@ const ExtensiveCards = () => {
 
         {isReactJSOptionSelected && (
           <div
-            className="col-md-6 code-container mt-5"
-            style={{ width: "100%", height: "auto" }}
+            className="col-md-6 code-container mt-5 shadow rounded p-2"
+            style={{ width: "60%", height: "auto" }}
           >
             <AccordionReact />
           </div>
         )}
         {isBasicApplicationOptionSelected && (
           <div
-            className="col-md-6 code-container mt-4"
-            style={{ width: "100%", height: "auto" }}
+            className="col-md-6 code-container mt-4 shadow rounded p-2"
+            style={{ width: "60%", height: "auto" }}
           >
             <AccordionBasic />
           </div>
         )}
       </div>
-
-      {/* <div
-        className="container-code row d-flex justify-content-center align-items-center mb-5"
-        style={{ width: "95%", height: "350px", margin: "0 2rem" }}
-      >
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
-          <h2 className="title text-center fw-bold mt-3">Component Code</h2>
-          <div className="btn-group mt-2">
-            <button
-              type="button"
-              className="btn btn-secondary dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Select
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <a
-                  className="dropdown-item"
-                  onClick={() => handleOptionSelect("React JS")}
-                >
-                  React JS
-                </a>
-              </li>
-              <li>
-                <a
-                  className="dropdown-item"
-                  onClick={() => handleOptionSelect("Basic Application")}
-                >
-                  Basic Application
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {isReactJSOptionSelected && (
-          <div
-            className="col-md-6 code-container mt-5 "
-            style={{ width: "70%", height: "350px" }}
-          >
-            <AccordionReact />
-          </div>
-        )}
-        {isBasicApplicationOptionSelected && (
-          <div
-            className="col-md-6 code-container mt-4 "
-            style={{ width: "70%", height: "350px" }}
-          >
-            <AccordionBasic />
-          </div>
-        )}
-      </div> */}
     </div>
   );
 };
