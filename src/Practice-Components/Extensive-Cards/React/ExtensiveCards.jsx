@@ -21,8 +21,7 @@ const ExtensiveCards = () => {
     setIsReactJSOptionSelected(option === "React JS");
     setIsBasicApplicationOptionSelected(option === "Basic Application");
   };
-  selectedOption === "React JS";
-  
+ selectedOption === "React JS";
 
   useEffect(() => {
     const panels = document.querySelectorAll(".panel");
@@ -217,7 +216,7 @@ const ExtensiveCards = () => {
 
         {isReactJSOptionSelected && (
           <div
-            className="col-md-6 code-container mt-5 shadow rounded p-2"
+            className="col-md-6 code-container mt-5 shadow rounded p-2 "
             style={{ width: "60%", height: "auto" }}
           >
             <div className="d-flex justify-content-end">
