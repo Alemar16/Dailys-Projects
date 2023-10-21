@@ -10,6 +10,7 @@ import imageReact from "../../../assets/icons/react.svg";
 
 const ExtensiveCards = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [isReactJSOptionSelected, setIsReactJSOptionSelected] = useState(false);
   const [
     isBasicApplicationOptionSelected,
     setIsBasicApplicationOptionSelected,
@@ -17,9 +18,11 @@ const ExtensiveCards = () => {
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
+    setIsReactJSOptionSelected(option === "React JS");
     setIsBasicApplicationOptionSelected(option === "Basic Application");
   };
-  const isReactJSOptionSelected = selectedOption === "React JS";
+  selectedOption === "React JS";
+  
 
   useEffect(() => {
     const panels = document.querySelectorAll(".panel");
@@ -217,6 +220,18 @@ const ExtensiveCards = () => {
             className="col-md-6 code-container mt-5 shadow rounded p-2"
             style={{ width: "60%", height: "auto" }}
           >
+            <div className="d-flex justify-content-end">
+              <button
+                onClick={() => setIsReactJSOptionSelected(false)}
+                className="btn  mt-1"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-original-title="Close"
+                data-bs-custom-class="custom-tooltip-class"
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
             <AccordionReact />
           </div>
         )}
@@ -225,6 +240,19 @@ const ExtensiveCards = () => {
             className="col-md-6 code-container mt-4 shadow rounded p-2"
             style={{ width: "60%", height: "auto" }}
           >
+            <div className="d-flex justify-content-end">
+              <button
+                onClick={() => setIsBasicApplicationOptionSelected(false)}
+                className="btn mt-1"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-original-title="Close"
+                data-bs-custom-class="custom-tooltip-class"
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
+
             <AccordionBasic />
           </div>
         )}
