@@ -66,7 +66,7 @@ const ExtensiveCards = () => {
       <div className="d-flex justify-content-end m-4">
         <Link
           to="/extensive-cards-views"
-          className="btn btn-secondary m-2 "
+          className="btn btn-light m-2"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           data-bs-original-title="View"
@@ -76,7 +76,7 @@ const ExtensiveCards = () => {
         </Link>
         <Link
           to="/"
-          className="btn btn-secondary m-2 "
+          className="btn btn-light m-2"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           data-bs-original-title="Return"
@@ -149,6 +149,8 @@ const ExtensiveCards = () => {
           padding: "1rem",
         }}
       >
+{/* description and Use code opption */}
+
         <div className="row">
           <div className="col-md-6 d-flex flex-column justify-content-start align-items-center">
             <div className="d-flex flex-column align-items-start">
