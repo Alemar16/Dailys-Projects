@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,19 +8,43 @@
 </head>
 
 <body>
-  <h1 class="title">Random Image Gallery</h1>
-  <!-- Botón de actualización y contenedor de imágenes -->
-  <button id="refreshButton">Refresh Images</button>
- 
-    <div class="container"></div>
+  <div class="container-title">
+    <h1 class="title">Random <br /> Image<br />Gallery</h1>
+    <div>
+      <p class="description">Welcome to our <span class="highlight">Random Image Gallery</span>.<br /> Explore our
+        extensive collection of carefully curated high-quality photographs to
+        inspire and delight.</p>
+      <!-- Botón de actualización y contenedor de imágenes -->
+      <div class="container-button">
+        <a href="https://unsplash.com" target="_blank" noreferrer><img
+            src="https://logowik.com/content/uploads/images/unsplash8609.jpg" alt="Logo de Unsplash"></a>
+        <button id="refreshButton">Refresh Images</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container"></div>
   <!-- Modal para mostrar la imagen en tamaño completo -->
   <div id="modal" class="modal">
-    <span class="close">&times;</span>
+    <span class="close"><ion-icon name="exit-outline"></ion-icon></span>
     <img id="modalImage" src="" alt="Ampliación de imagen">
+    <a id="imageLink" target="_blank">
+      <span class="open-page"><ion-icon name="arrow-redo-outline"></ion-icon>Go to Unsplash</span>
+    </a>
   </div>
-  
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/armando-mart%C3%ADnez-zambrano" target="_blank"><ion-icon
+          name="logo-linkedin"></a>
+      <p>Created by Alemar16 - © 2023</p>
+      <a href="https://github.com/Alemar16" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
+  <!-- ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
