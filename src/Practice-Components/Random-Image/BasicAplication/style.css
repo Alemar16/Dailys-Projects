@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-image: url('https://images.pexels.com/photos/6686455/pexels-photo-6686455.jpeg?auto=compress&cs=tinysrgb');
+  background-image: url('../images/pexel-bg.jpg');
   background-size: cover;
   background-position: center;
   font-family: 'Roboto', sans-serif;
@@ -17,12 +19,84 @@ body {
   margin: 0;
 }
 
+.container-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to top, #14141425, #ffffff);
+  width: 100%;
+  margin-bottom: 0;
+}
+
 .title {
-  margin: 50px 0 0;
-  text-align: center;
+  flex: 1;
+  font-family: 'Black Ops One', sans-serif;
+  font-size: 60px;
+  color: #ca970a;
+  text-shadow: 2px 2px 2px #000000;
+  margin-left: 3rem;
+  letter-spacing: 8px;
+}
+
+.description {
+  flex: 1;
+  font-family: 'Indie Flower', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #222121;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #ca970a;
+  text-shadow: 2px 2px 2px #000000;
+  letter-spacing: 2px;
+}
+
+img {
+  width: 80px;
+  height: 50px;
+  border-radius: 10%;
+  margin-right: 190px;
+  transition: transform 0.3s;
+}
+
+img:hover {
+  transform: scale(1.1);
 }
 
 /* button styles */
+.container-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+#refreshButton {
+  position: relative;
+  margin: 20px 0;
+  padding: 0.8em 1em;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  background-color: #ca970a;
+  border-radius: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: 300;
+  font-size: 18px;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
 #refreshButton:hover {
   animation: sh0 0.5s ease-in-out both;
 }
@@ -84,8 +158,6 @@ body {
   transform: translate(50%, 0) scale(1.1);
 }
 
-
-
 .container {
   display: flex;
   align-items: center;
@@ -95,17 +167,17 @@ body {
   border: #333 1px solid;
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
-  margin: 1rem 1rem;
+  
   background: rgba(255, 255, 255, 0.158);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    backdrop-filter: blur(16px) saturate(180%);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.185);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 12px;
-    border: 1px RGBA sólido (255, 255, 213, 0.3209219);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.185);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 12px;
+  border: 1px RGBA sólido (255, 255, 213, 0.3209219);
 }
 
 .container img {
@@ -117,35 +189,11 @@ body {
   border-radius: 7%;
   transition: transform 0.3s;
   cursor: pointer;
-  /* Añade una transición suave a la transformación */
 }
 
 .container img:hover {
   transform: scale(1.1);
   /* Aumenta el tamaño de la imagen en un 10% al pasar el cursor sobre ella */
-}
-
-#refreshButton {
-  position: relative;
-  margin: 0;
-  padding: 0.8em 1em;
-  outline: none;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  text-transform: uppercase;
-  background-color: #333;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: 300;
-  font-size: 18px;
-  font-family: inherit;
-  z-index: 0;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
 /* Estilos para el modal */
@@ -167,9 +215,9 @@ body {
   display: block;
   margin: auto;
   width: 60%;
-    height: auto;
-    max-width: 500px;
-    max-height: 80%;
+  height: auto;
+  max-width: 500px;
+  max-height: 80%;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(153, 150, 150, 0.2), 0 6px 20px 0 rgba(253, 253, 253, 0.19);
 }
@@ -180,6 +228,9 @@ body {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  position: absolute;
+  top: 80px;
+  right: 80px;
 }
 
 .close:hover,
@@ -187,4 +238,149 @@ body {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Estilos para el botón "open.page" */
+.open-page {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: #ca970a;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 50px;
+}
+
+a {
+  text-decoration: none;
+  /* Quita el subrayado de los enlaces */
+}
+
+ion-icon {
+  font-size: 24px;
+  margin-left: 5px;
+  /* Agrega un espacio entre el ícono y la imagen */
+}
+
+/* Estilos para el footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #33333300;
+  color: #fff;
+  border-bottom: 2px solid #ca970a;
+  margin: 40px;
+  /* Agrega una línea horizontal en la parte superior del footer */
+}
+
+/* Estilos para el contenedor de iconos sociales */
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+
+}
+
+.social-icons a {
+  color: #ca970a;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+.social-icons a:hover {
+  color: #0077B5;
+}
+
+/* Cambiar el estilo de la barra de desplazamiento */
+body {
+  scrollbar-color: transparent #ca970a;
+  /* Establece el color de la barra de desplazamiento y el color del fondo */
+}
+
+/* Cambiar el estilo de la barra de desplazamiento */
+body {
+  scrollbar-color: rgba(0, 0, 0, 0) #ca970a;
+  /* Establece el color de la barra de desplazamiento y el color del fondo */
+}
+
+/* Estilo para la barra de desplazamiento en Chrome, Safari y Opera */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ca970a;
+  border-radius: 12px;
+  /* Establece el color de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(29, 28, 28);
+  /* Establece el fondo transparente */
+}
+
+/* Estilo para la barra de desplazamiento en Firefox */
+body {
+  scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(29, 28, 28);
+  /* Establece el fondo transparente */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ca970a;
+  /* Establece el color de la barra de desplazamiento */
+}
+
+/* Estilos para pantallas de escritorio */
+@media only screen and (min-width: 993px) {
+  /* Añade tus estilos específicos para pantallas de escritorio aquí */
+}
+
+/* Para dispositivos móviles y tabletas */
+@media (max-width: 992px) {
+  .container-title {
+    flex-direction: column;
+  }
+
+  .title {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .description {
+    text-align: center;
+    margin: 10px;
+  }
+
+  .container-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+
+  #refreshButton {
+    margin-right: 0;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    right: 180px;
+  }
+
 }
