@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url('../images/pexel-bg.jpg');
+  background-image: url('./images/pexel-bg.jpg');
   background-size: cover;
   background-position: center;
   font-family: 'Roboto', sans-serif;
