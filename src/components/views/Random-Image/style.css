@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
+/* .logo-unsplashb -button styles */
 .logo-unsplash {
   width: 80px;
   height: 50px;
@@ -13,3 +14,148 @@
 .logo-unsplash:hover {
   transform: scale(1.1);
 }
+
+.container-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+#refreshButton {
+  position: relative;
+  margin: 20px 0;
+  padding: 0.8em 1em;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  background-color: #ca970a;
+  border-radius: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: 300;
+  font-size: 18px;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+#refreshButton:hover {
+  animation: sh0 0.5s ease-in-out both;
+}
+
+@keyframes sh0 {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: rotate(7deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-7deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+#refreshButton:hover span {
+  animation: storm 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+#refreshButton::before,
+#refreshButton::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+  z-index: -1;
+  transform: translate(100%, -25%) translate3d(0, 0, 0);
+}
+
+#refreshButton:hover::before,
+#refreshButton:hover::after {
+  opacity: 0.15;
+  transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+#refreshButton:hover::before {
+  transform: translate3d(50%, 0, 0) scale(0.9);
+}
+
+#refreshButton:hover::after {
+  transform: translate(50%, 0) scale(1.1);
+}
+
+.container {
+  max-width: 1100px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.103);
+  /* Ajusta el valor alfa para cambiar la transparencia */
+  -webkit-backdrop-filter: blur(5px) saturate(250%);
+  /* Ajusta los valores de blur y saturate según tus preferencias */
+  backdrop-filter: blur(5px) saturate(250%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.container img {
+  object-fit: cover;
+  margin: 10px;
+  height: 300px;
+  width: 300px;
+  max-width: 100%;
+  border-radius: 7%;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.container img:hover {
+  transform: scale(1.1);
+}
+
+.user-overlay {
+  position: absolute;
+  margin: 10px;
+  bottom: 0;
+  padding: 8px;
+  color: #ca970a;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0,0,0,0.5);
+  text-shadow: 2px 1px 1px #000000, 2px 2px 2px #ffffff ;
+  text-align: center;
+  height: 50px;
+  width: 300px;
+  border-radius: 0 0 7px 7p1;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.container img:hover+.user-overlay {
+  opacity: 0;
+}
+
+
+
+
+
