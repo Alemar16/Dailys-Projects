@@ -33,6 +33,14 @@ const Home = () => {
   const handleGoToExtensiveCardsView = () => {
     navigate("/extensive-cards-views");
   };
+
+  const handleGoToRandomImage = () => {
+    navigate("/random-image");
+  };
+
+  const handleGoToRandomImageViews = () => {
+    navigate("/random-image-views");
+  };
   return (
     <div>
       <h1 className="visually-hidden">Heroes examples</h1>
@@ -160,7 +168,7 @@ const Home = () => {
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
-                      onClick={handleGoToExtensiveCards}
+                      onClick={handleGoToRandomImage}
                     >
                       Info
                     </button>
@@ -168,7 +176,7 @@ const Home = () => {
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
-                      onClick={handleGoToExtensiveCardsView}
+                      onClick={handleGoToRandomImageViews}
                       data-bs-toggle="tooltip"
                       data-bs-placement="right"
                       data-bs-original-title="View"
