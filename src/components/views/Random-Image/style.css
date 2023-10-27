@@ -155,29 +155,22 @@
   opacity: 0;
 }
 
+
 /* Estilos para el modal */
-/* #modal.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 0;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+.custom-modal .modal-content {
+  background: fixed;
+  border: none;
+  border-radius: 0;
 }
 
-#modal.modal img {
-  display: block;
-  margin: auto;
-  width: 600px;
-  height: 600px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px 0 rgba(153, 150, 150, 0.2), 0 6px 20px 0 rgba(253, 253, 253, 0.19);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
+ .modal-backdrop.show {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Ajustamos la opacidad y el tono de color para hacerlo más oscuro */
+  z-index: 1050;
+  /* Añadimos un índice z para controlar el apilamiento de capas */
+  filter: blur(3px) saturate(250%);
+  /* Aplicamos un ligero efecto de desenfoque al fondo oscuro */
+  pointer-events: none;
+  /* Deshabilitamos eventos de puntero para permitir hacer clic en elementos subyacentes */
+}
