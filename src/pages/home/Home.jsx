@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import image1 from "../../assets/images/bootstrap-themes.png";
 import imageCard1 from "../../assets/images/images-practice/image1.png";
-import "./Home.css";
+import "./home.css";
 import imageHtml from "../../assets/icons/html.png";
 import imageCss from "../../assets/icons/css.png";
 import imageJavaScript from "../../assets/icons/js.png";
