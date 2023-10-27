@@ -159,8 +159,7 @@
 /* Estilos para el modal */
 .custom-modal .modal-content {
   background: fixed;
-  border: none;
-  border-radius: 0;
+  
 }
 
  .modal-backdrop.show {
