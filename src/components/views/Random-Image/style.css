@@ -169,7 +169,7 @@
   /* Ajustamos la opacidad y el tono de color para hacerlo más oscuro */
   z-index: 1050;
   /* Añadimos un índice z para controlar el apilamiento de capas */
-  filter: blur(3px) saturate(250%);
+  /* filter: blur(3px) saturate(250%); */
   /* Aplicamos un ligero efecto de desenfoque al fondo oscuro */
   pointer-events: none;
   /* Deshabilitamos eventos de puntero para permitir hacer clic en elementos subyacentes */
