@@ -31,18 +31,18 @@ const RandomImageViews = () => {
   }, []);
 
   const refreshImages = async () => {
-  try {
-    const { response: images } = await unsplash.photos.getRandom({
-      count: 15,
-    });
-    setImages(images);
-  } catch (error) {
-    console.error("Error fetching images from Unsplash", error);
-  }
-};
+    try {
+      const { response: images } = await unsplash.photos.getRandom({
+        count: 15,
+      });
+      setImages(images);
+    } catch (error) {
+      console.error("Error fetching images from Unsplash", error);
+    }
+  };
 
   const handleImageClick = (imageSrc) => {
-    setModalImage( imageSrc);
+    setModalImage(imageSrc);
     setShowModal(true);
   };
 
@@ -64,6 +64,7 @@ const RandomImageViews = () => {
         <h1
           className="title"
           style={{
+            marginLeft: "2rem",
             fontFamily: "'Black Ops One', sans-serif",
             fontWeight: 600,
             fontSize: "60px",
@@ -111,7 +112,9 @@ const RandomImageViews = () => {
                 alt="Logo de Unsplash"
               />
             </a>
-            <button id="refreshButton" onClick={ refreshImages}>Refresh Images</button>
+            <button id="refreshButton" onClick={refreshImages}>
+              Refresh Images
+            </button>
           </div>
         </div>
       </div>
@@ -171,10 +174,69 @@ const RandomImageViews = () => {
             src={modalImage}
             alt="Ampliación de imagen"
             className="modal-image"
-            style={{ width: "600px", height: "600px" }}
+            style={{ width: "900px", height: "500px" }}
           />
         </Modal.Body>
+
+        <div className="modal-info col" style={{ marginLeft: "20px" }}>
+          <p>
+            <button
+              className="btn"
+              style={{ backgroundColor: "#ca970a" }}
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseWidthExample"
+              aria-expanded="false"
+              aria-controls="collapseWidthExample"
+            >
+              Photo Information
+            </button>
+          </p>
+          <div style={{ minHeight: "120px" }}>
+            <div
+              className="collapse collapse-horizontal"
+              id="collapseWidthExample"
+            >
+              <div className="card card-body" style={{ width: "400px", background: 'transparent' }}>
+                <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
+                  <li>
+                    <strong>Nombre:</strong> {modalImage?.alt_description || ""}
+                  </li>
+                  <li>
+                    <strong>Link Unsplash:</strong>{" "}
+                    <a
+                      href={modalImage?.links?.html || ""}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Link de la imagen en Unsplash
+                    </a>
+                  </li>
+                  <li>
+                    <strong>Nombre del creador:</strong>{" "}
+                    {modalImage?.user?.name || ""}
+                  </li>
+                  <li>
+                    <strong>Perfil del Creador:</strong>{" "}
+                    <a
+                      href={modalImage?.user?.links?.html || ""}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Enlace al perfil del usuario
+                    </a>
+                  </li>
+                  <li>
+                    <strong>Descripción:</strong>{" "}
+                    {modalImage?.description || ""}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </Modal>
+
       <footer>
         <div className="social-icons">
           <a
@@ -199,4 +261,3 @@ const RandomImageViews = () => {
 };
 
 export default RandomImageViews;
-
