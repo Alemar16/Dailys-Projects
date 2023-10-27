@@ -30,6 +30,17 @@ const RandomImageViews = () => {
     fetchImages();
   }, []);
 
+  const refreshImages = async () => {
+  try {
+    const { response: images } = await unsplash.photos.getRandom({
+      count: 15,
+    });
+    setImages(images);
+  } catch (error) {
+    console.error("Error fetching images from Unsplash", error);
+  }
+};
+
   const handleImageClick = (imageSrc) => {
     setModalImage( imageSrc);
     setShowModal(true);
@@ -100,7 +111,7 @@ const RandomImageViews = () => {
                 alt="Logo de Unsplash"
               />
             </a>
-            <button id="refreshButton">Refresh Images</button>
+            <button id="refreshButton" onClick={ refreshImages}>Refresh Images</button>
           </div>
         </div>
       </div>
