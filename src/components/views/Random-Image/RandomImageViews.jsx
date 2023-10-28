@@ -15,22 +15,7 @@ const RandomImageViews = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const { response: images } = await unsplash.photos.getRandom({
-          count: 15,
-        });
-        setImages(images);
-      } catch (error) {
-        console.error("Error fetching images from Unsplash", error);
-      }
-    };
-
-    fetchImages();
-  }, []);
-
-  const refreshImages = async () => {
+  const fetchImages = async () => {
     try {
       const { response: images } = await unsplash.photos.getRandom({
         count: 15,
@@ -39,6 +24,13 @@ const RandomImageViews = () => {
     } catch (error) {
       console.error("Error fetching images from Unsplash", error);
     }
+  };
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const handleRefreshImages = () => {
+    fetchImages();
   };
 
   const handleImageClick = (imageSrc) => {
@@ -112,7 +104,7 @@ const RandomImageViews = () => {
                 alt="Logo de Unsplash"
               />
             </a>
-            <button id="refreshButton" onClick={refreshImages}>
+            <button id="refreshButton" onClick={handleRefreshImages}>
               Refresh Images
             </button>
           </div>
@@ -197,7 +189,14 @@ const RandomImageViews = () => {
               className="collapse collapse-horizontal"
               id="collapseWidthExample"
             >
-              <div className="card card-body" style={{ width: "400px", background: 'transparent' }}>
+              <div
+                className="card card-body"
+                style={{
+                  width: "400px",
+                  background: "transparent",
+                  border: "1px solid #ca970a",
+                }}
+              >
                 <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
                   <li>
                     <strong>Nombre:</strong> {modalImage?.alt_description || ""}
