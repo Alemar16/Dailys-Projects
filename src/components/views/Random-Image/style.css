@@ -11,19 +11,23 @@
   transition: transform 0.3s;
 }
 
-.logo-unsplash:hover {
-  transform: scale(1.1);
-}
-
 .container-button {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
 }
 
+#search-input {
+  padding: 0.8em 1em;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  flex: 1;
+}
+
+#search-button,
 #refreshButton {
-  position: relative;
-  margin: 20px 0;
   padding: 0.8em 1em;
   outline: none;
   text-decoration: none;
@@ -33,10 +37,7 @@
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  background-color: #ca970a;
   border-radius: 10px;
-  color: #fff;
-  text-shadow: 2px 2px 2px #000000;
   font-weight: 300;
   font-size: 18px;
   font-family: inherit;
@@ -45,9 +46,24 @@
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
+#search-button {
+  background-color: #ca970a;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
+  margin-right: 5px;
+}
+
+#refreshButton {
+  background-color: #ca970a;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
+}
+
 #refreshButton:hover {
   animation: sh0 0.5s ease-in-out both;
 }
+
+/* Resto de tu código de animación... */
 
 @keyframes sh0 {
   0% {

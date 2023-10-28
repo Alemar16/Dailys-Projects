@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { createApi } from "unsplash-js";
 import imageBg from "../../../Practice-Components/Random-Image/BasicAplication/images/pexel-bg.jpg";
 import { Modal } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./style.css"; // Importa el archivo de estilos CSS
 
@@ -13,7 +15,39 @@ const unsplash = createApi({
 const RandomImageViews = () => {
   const [images, setImages] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [modalImage, setModalImage] = useState("");
+  const [selectedImage, setSelectedImage] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); // Nuevo estado para el searchQuery,
+  const [searchError, setSearchError] = useState("");// Nuevo estado para el error de consulta
+
+  const searchPhotos = async (query) => {
+    try {
+      const { response } = await unsplash.search.getPhotos({
+        query,
+        page: 1,
+        perPage: 15,
+      });
+      setImages(response.results);
+      setSearchError(""); // Limpiar el mensaje de error si la búsqueda tiene éxito
+    } catch (error) {
+      console.error("Error searching photos from Unsplash", error);
+      toast.error("Error al buscar fotos. Inténtalo de nuevo más tarde.", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
+ 
+
+ const handleSearch = () => {
+   if (searchQuery.length < 3) {
+     toast.error("La consulta debe tener al menos 3 caracteres", {
+       position: toast.POSITION.TOP_RIGHT,
+     });
+   } else {
+     // Lógica de búsqueda aquí
+     setSearchQuery("");
+   }
+ };
+
 
   const fetchImages = async () => {
     try {
@@ -25,6 +59,7 @@ const RandomImageViews = () => {
       console.error("Error fetching images from Unsplash", error);
     }
   };
+
   useEffect(() => {
     fetchImages();
   }, []);
@@ -34,8 +69,32 @@ const RandomImageViews = () => {
   };
 
   const handleImageClick = (imageSrc) => {
-    setModalImage(imageSrc);
     setShowModal(true);
+    setSelectedImage(imageSrc);
+  };
+  function capitalize(str) {
+    return str.replace(/\b\w/g, (l) => l.toUpperCase());
+  }
+  // Función para manejar la descarga de la imagen
+  const handleImageDownload = (downloadLocation) => {
+    // Realiza la solicitud GET al punto de conexión de descarga
+    fetch(downloadLocation)
+      .then((response) => {
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+          throw new Error("Error al descargar la imagen");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Maneja la respuesta
+        console.log("Imagen descargada:", data.url);
+        // Aquí puedes realizar más acciones con la URL de descarga si es necesario
+      })
+      .catch((error) => {
+        // Maneja los errores si los hay
+        console.error("Error al descargar la imagen:", error);
+      });
   };
 
   return (
@@ -58,11 +117,11 @@ const RandomImageViews = () => {
           style={{
             marginLeft: "2rem",
             fontFamily: "'Black Ops One', sans-serif",
-            fontWeight: 600,
-            fontSize: "60px",
             color: "#ca970a",
             textShadow: "2px 2px 2px #000000",
             letterSpacing: "8px",
+            fontWeight: 600,
+            fontSize: "60px",
           }}
         >
           Random <br /> Image
@@ -96,17 +155,43 @@ const RandomImageViews = () => {
             .<br /> Explore our extensive collection of carefully curated
             high-quality photographs to inspire and delight.
           </p>
-          <div className="container-button">
-            <a href="https://unsplash.com" target="_blank" rel="noreferrer">
-              <img
-                className="logo-unsplash"
-                src="https://logowik.com/content/uploads/images/unsplash8609.jpg"
-                alt="Logo de Unsplash"
+          <div
+            className="container-button"
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ marginRight: "1rem", flex: 1 }}>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search for a photo"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{ width: "100%", padding: "0.5rem" }}
               />
-            </a>
-            <button id="refreshButton" onClick={handleRefreshImages}>
-              Refresh Images
-            </button>
+            </div>
+            <div style={{ marginRight: "3rem" }}>
+              <button
+                id="search-button"
+                onClick={handleSearch}
+                style={{ padding: "0.5rem 1rem" }}
+              >
+                Search
+              </button>
+              
+            </div>
+            <div>
+              <button
+                id="refreshButton"
+                onClick={handleRefreshImages}
+                style={{ padding: "0.5rem 1rem" }}
+              >
+                Refresh Images
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -163,7 +248,7 @@ const RandomImageViews = () => {
       >
         <Modal.Body style={{ display: "flex", justifyContent: "center" }}>
           <img
-            src={modalImage}
+            src={selectedImage}
             alt="Ampliación de imagen"
             className="modal-image"
             style={{ width: "900px", height: "500px" }}
@@ -190,71 +275,287 @@ const RandomImageViews = () => {
               id="collapseWidthExample"
             >
               <div
-                className="card card-body"
+                className="card"
                 style={{
                   width: "400px",
-                  background: "transparent",
-                  border: "1px solid #ca970a",
+
+                  backgroundColor: "rgba(0, 0, 0, 0.3)",
+                  color: "#ffffff",
+                  boxShadow: "rgba(255, 255, 255, 0.5) 0px 0px 20px",
                 }}
               >
-                <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
-                  <li>
-                    <strong>Nombre:</strong> {modalImage?.alt_description || ""}
-                  </li>
-                  <li>
-                    <strong>Link Unsplash:</strong>{" "}
-                    <a
-                      href={modalImage?.links?.html || ""}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Link de la imagen en Unsplash
-                    </a>
-                  </li>
-                  <li>
-                    <strong>Nombre del creador:</strong>{" "}
-                    {modalImage?.user?.name || ""}
-                  </li>
-                  <li>
-                    <strong>Perfil del Creador:</strong>{" "}
-                    <a
-                      href={modalImage?.user?.links?.html || ""}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Enlace al perfil del usuario
-                    </a>
-                  </li>
-                  <li>
-                    <strong>Descripción:</strong>{" "}
-                    {modalImage?.description || ""}
-                  </li>
-                </ul>
+                {images.map((image) => {
+                  if (image.urls.regular === selectedImage) {
+                    return (
+                      <div key={image.id} className="artist-container p-3">
+                        <div className="d-flex align-items-start">
+                          <div className="artist-image">
+                            <img
+                              src={image.user.profile_image.large}
+                              alt="Artist Profile"
+                              className="rounded-circle"
+                              style={{ width: "140px", height: "140px" }}
+                            />
+                          </div>
+                          <div className="artist-details ms-3">
+                            <h2
+                              className="fw-bold"
+                              style={{
+                                color: "#ca970a",
+                                textShadow: "2px 2px 2px #000000",
+                              }}
+                            >
+                              {image.user.name}
+                            </h2>
+                            <p className="mb-1 fw-bold ">
+                              @{image.user.username}
+                            </p>
+                            <p className="mb-3">
+                              {image.location.city && image.location.country
+                                ? `${image.location.city}, ${image.location.country}`
+                                : "Location not specified"}
+                            </p>
+                            <div className="social-icons d-flex gap-3 mb-3 align-items-center justify-content-center">
+                              {image.user.social.instagram_username && (
+                                <a href={image.user.social.instagram_username}>
+                                  <ion-icon
+                                    name="logo-instagram"
+                                    style={{
+                                      width: "30px",
+                                      height: "30px",
+                                      color: "#ca970a",
+                                    }}
+                                  ></ion-icon>
+                                </a>
+                              )}
+                              {image.user.social.twitter_username && (
+                                <a href={image.user.social.twitter_username}>
+                                  <ion-icon
+                                    name="logo-twitter"
+                                    style={{
+                                      width: "30px",
+                                      height: "30px",
+                                      color: "#ca970a",
+                                    }}
+                                  ></ion-icon>
+                                </a>
+                              )}
+                              {image.user.portfolio_url && (
+                                <a href={image.user.portfolio_url}>
+                                  <ion-icon
+                                    name="briefcase-outline"
+                                    style={{
+                                      width: "30px",
+                                      height: "30px",
+                                      color: "#ca970a",
+                                    }}
+                                  ></ion-icon>
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="artist-description my-3">
+                          <h4>
+                            {image.description
+                              ? image.description.toUpperCase()
+                              : ""}
+                          </h4>
+                          <p className="mb-3 align-items-center">
+                            {image.alt_description
+                              ? capitalize(image.alt_description)
+                              : ""}
+                          </p>
+                        </div>
+                        <div className="image-properties mb-3 align-items-center justify-content-center">
+                          <p
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "10px",
+                            }}
+                          >
+                            <span
+                              style={{
+                                marginRight: "5px",
+                                fontWeight: "bold",
+                              }}
+                            >
+                              Image Size:
+                            </span>
+                            <span
+                              style={{
+                                Color: "#ca970a",
+                                fontWeight: "bold",
+                                marginRight: "50px",
+                              }}
+                            >
+                              {image.width} x {image.height}
+                            </span>
+                            <span
+                              style={{ display: "flex", alignItems: "center" }}
+                            >
+                              <span
+                                style={{
+                                  marginRight: "10px",
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                Color:
+                              </span>
+                              <span
+                                style={{
+                                  backgroundColor: image.color,
+                                  width: "20px",
+                                  height: "20px",
+                                  borderRadius: "50%",
+                                  display: "inline-block",
+                                }}
+                              ></span>
+                            </span>
+                          </p>
+                        </div>
+                        <div
+                          className="image-stats mb-3 align-items-center justify-content-center"
+                          style={{ display: "flex" }}
+                        >
+                          <div
+                            style={{
+                              marginRight: "30px",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <ion-icon
+                              name="thumbs-up-outline"
+                              style={{
+                                fontSize: "24px",
+                                marginRight: "5px",
+                                color: "#ca970a",
+                              }}
+                            ></ion-icon>
+                            <p style={{ margin: 0 }}>{image.likes}</p>
+                          </div>
+                          <div
+                            style={{
+                              marginRight: "30px",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <ion-icon
+                              name="glasses-outline"
+                              style={{
+                                fontSize: "24px",
+                                marginRight: "5px",
+                                color: "#ca970a",
+                              }}
+                            ></ion-icon>
+                            <p style={{ margin: 0 }}>{image.views}</p>
+                          </div>
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <ion-icon
+                              name="download-outline"
+                              style={{
+                                fontSize: "24px",
+                                marginRight: "5px",
+                                color: "#ca970a",
+                              }}
+                            ></ion-icon>
+                            <p style={{ margin: 0 }}>{image.downloads}</p>
+                          </div>
+                        </div>
+
+                        <div className="artist-buttons d-flex justify-content-between">
+                          <a
+                            className="btn-profile"
+                            style={{
+                              backgroundColor: "#ca970a",
+                              border: "1px solid #ca970a",
+                            }}
+                            href={image.links.html}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Unsplash Profile
+                          </a>
+
+                          <a
+                            className="btn"
+                            style={{
+                              backgroundColor: "#ca970a",
+                              border: "1px solid #ca970a",
+                            }}
+                            href={image.links.download}
+                            onClick={() =>
+                              handleImageDownload(image.links.download_location)
+                            }
+                          >
+                            <ion-icon name="cloud-download-outline"></ion-icon>
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
               </div>
             </div>
           </div>
         </div>
       </Modal>
 
-      <footer>
-        <div className="social-icons">
+      <footer
+        style={{
+          backgroundColor: "#1a1a1a",
+          color: "#ffffff",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "20px",
+          width: "100%",
+          marginTop: "40px",
+        }}
+      >
+        <div
+          className="social-icons"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+            color: "#ca970a",
+          }}
+        >
           <a
             href="https://www.linkedin.com/in/armando-mart%C3%ADnez-zambrano"
             target="_blank"
             rel="noreferrer"
+            style={{ color: "#ca970a", margin: "0 10px" }}
           >
-            <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon
+              name="logo-linkedin"
+              style={{ fontSize: "32px" }}
+            ></ion-icon>
           </a>
-          <p>Created by Alemar16 - © 2023</p>
           <a
             href="https://github.com/Alemar16"
             target="_blank"
             rel="noreferrer"
+            style={{ color: "#ca970a", margin: "0 10px" }}
           >
-            <ion-icon name="logo-github"></ion-icon>
+            <ion-icon
+              name="logo-github"
+              style={{ fontSize: "32px" }}
+            ></ion-icon>
           </a>
         </div>
+        <p style={{ margin: 0, fontSize: "14px" }}>
+          Created by Alemar16 - © 2023
+        </p>
       </footer>
+      <ToastContainer />
     </div>
   );
 };
