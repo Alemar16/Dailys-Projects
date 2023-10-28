@@ -17,7 +17,7 @@ const RandomImageViews = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [searchQuery, setSearchQuery] = useState(""); // Nuevo estado para el searchQuery,
-  const [searchError, setSearchError] = useState("");// Nuevo estado para el error de consulta
+  const [, setSearchError] = useState("");// Nuevo estado para el error de consulta
 
   const searchPhotos = async (query) => {
     try {
@@ -39,14 +39,23 @@ const RandomImageViews = () => {
 
  const handleSearch = () => {
    if (searchQuery.length < 3) {
-     toast.error("La consulta debe tener al menos 3 caracteres", {
-       position: toast.POSITION.TOP_RIGHT,
+     toast.error(" The query must be at least 3 characters long", {
+       position: "top-center",
+       autoClose: 2000,
+       hideProgressBar: false,
+       closeOnClick: true,
+       pauseOnHover: true,
+       draggable: true,
+       progress: undefined,
+       theme: "dark",
      });
    } else {
      // Lógica de búsqueda aquí
+     searchPhotos(searchQuery);
      setSearchQuery("");
    }
  };
+
 
 
   const fetchImages = async () => {
