@@ -4,8 +4,11 @@ import imageBg from "../../../Practice-Components/Random-Image/BasicAplication/i
 import { Modal } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Masonry from "react-masonry-css";
 
 import "./style.css"; // Importa el archivo de estilos CSS
+
+const imagesPerRow = 3; // Define la cantidad de imágenes por fila
 
 const unsplash = createApi({
   accessKey: import.meta.env.VITE_UNSPLASH_ACCESS_KEY,
@@ -16,18 +19,18 @@ const RandomImageViews = () => {
   const [images, setImages] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-  const [searchQuery, setSearchQuery] = useState(""); // Nuevo estado para el searchQuery,
-  const [, setSearchError] = useState("");// Nuevo estado para el error de consulta
+  const [searchQuery, setSearchQuery] = useState("");
+  const [, setSearchError] = useState("");
 
   const searchPhotos = async (query) => {
     try {
       const { response } = await unsplash.search.getPhotos({
         query,
         page: 1,
-        perPage: 15,
+        perPage: imagesPerRow * 15, // Asegura que obtienes suficientes imágenes para llenar múltiples filas.
       });
       setImages(response.results);
-      setSearchError(""); // Limpiar el mensaje de error si la búsqueda tiene éxito
+      setSearchError("");
     } catch (error) {
       console.error("Error searching photos from Unsplash", error);
       toast.error("Error al buscar fotos. Inténtalo de nuevo más tarde.", {
@@ -35,35 +38,31 @@ const RandomImageViews = () => {
       });
     }
   };
- 
 
- const handleSearch = () => {
-   if (searchQuery.length < 3) {
-     toast.error(" The query must be at least 3 characters long", {
-       position: "top-center",
-       autoClose: 2000,
-       hideProgressBar: false,
-       closeOnClick: true,
-       pauseOnHover: true,
-       draggable: true,
-       progress: undefined,
-       theme: "dark",
-     });
-   } else {
-     // Lógica de búsqueda aquí
-     searchPhotos(searchQuery);
-     setSearchQuery("");
-   }
- };
-
-
+  const handleSearch = () => {
+    if (searchQuery.length < 3) {
+      toast.error("La consulta debe tener al menos 3 caracteres", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      searchPhotos(searchQuery);
+      setSearchQuery("");
+    }
+  };
 
   const fetchImages = async () => {
     try {
-      const { response: images } = await unsplash.photos.getRandom({
-        count: 15,
+      const { response: newImages } = await unsplash.photos.getRandom({
+        count: imagesPerRow * 15, // Obtén suficientes imágenes para llenar múltiples filas.
       });
-      setImages(images);
+      setImages(newImages);
     } catch (error) {
       console.error("Error fetching images from Unsplash", error);
     }
@@ -81,171 +80,113 @@ const RandomImageViews = () => {
     setShowModal(true);
     setSelectedImage(imageSrc);
   };
+
   function capitalize(str) {
     return str.replace(/\b\w/g, (l) => l.toUpperCase());
   }
-  // Función para manejar la descarga de la imagen
+
   const handleImageDownload = (downloadLocation) => {
-    // Realiza la solicitud GET al punto de conexión de descarga
     fetch(downloadLocation)
       .then((response) => {
-        // Verifica si la respuesta es exitosa
         if (!response.ok) {
           throw new Error("Error al descargar la imagen");
         }
         return response.json();
       })
       .then((data) => {
-        // Maneja la respuesta
         console.log("Imagen descargada:", data.url);
-        // Aquí puedes realizar más acciones con la URL de descarga si es necesario
       })
       .catch((error) => {
-        // Maneja los errores si los hay
         console.error("Error al descargar la imagen:", error);
       });
   };
 
   return (
     <div
-      className="container-page container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100 p-0"
+      className="container-page container-fluid p-0"
       style={{
         backgroundImage: `url(${imageBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        fontFamily: "'Roboto', sans-serif",
+        backgroundSize: "100% 100%", // Estirar verticalmente
+        backgroundPosition: "center", // Asegura que la imagen esté centrada
+        backgroundRepeat: "no-repeat", // Evita la repetición de la imagen
+        minHeight: "100vh",
+        opacity: "1",
       }}
     >
-      <div
-        className="container-title d-flex justify-content-between align-items-center  w-100 mb-0"
-        style={{ background: "linear-gradient(to top, #14141425, #ffffff)" }}
-      >
-        {/* Resto del código */}
-        <h1
-          className="title"
-          style={{
-            marginLeft: "2rem",
-            fontFamily: "'Black Ops One', sans-serif",
-            color: "#ca970a",
-            textShadow: "2px 2px 2px #000000",
-            letterSpacing: "8px",
-            fontWeight: 600,
-            fontSize: "60px",
-          }}
-        >
+      <div className="container-title mb-3">
+        <h1 className="title">
           Random <br /> Image
           <br />
           Gallery
         </h1>
         <div>
-          <p
-            className="description"
-            style={{
-              fontFamily: "'Indie Flower', sans-serif",
-              fontWeight: "bold",
-              fontSize: "30px",
-              color: "#222121",
-              maxWidth: "800px",
-              lineHeight: 1.6,
-              flex: 1,
-            }}
-          >
+          <p className="description">
             Welcome to our{" "}
-            <span
-              className="highlight"
-              style={{
-                color: "#ca970a",
-                textShadow: "2px 2px 2px #000000",
-                letterSpacing: "2px",
-              }}
-            >
-              Random Image Gallery
-            </span>
+            <span className="highlight">Random Image Gallery</span>
             .<br /> Explore our extensive collection of carefully curated
             high-quality photographs to inspire and delight.
           </p>
-          <div
-            className="container-button"
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <div style={{ marginRight: "1rem", flex: 1 }}>
+          <div className="container-button d-flex justify-content-between align-items-center my-4">
+            <div className="input-group">
               <input
                 type="text"
                 id="search-input"
+                className="form-control"
                 placeholder="Search for a photo"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                style={{ width: "100%", padding: "0.5rem" }}
               />
-            </div>
-            <div style={{ marginRight: "3rem" }}>
               <button
                 id="search-button"
+                className="btn btn-primary"
                 onClick={handleSearch}
-                style={{ padding: "0.5rem 1rem" }}
               >
                 Search
               </button>
-              
             </div>
-            <div>
-              <button
-                id="refreshButton"
-                onClick={handleRefreshImages}
-                style={{ padding: "0.5rem 1rem" }}
-              >
-                Refresh Images
-              </button>
-            </div>
+            <button
+              id="refreshButton"
+              className="btn btn-secondary"
+              onClick={handleRefreshImages}
+            >
+              Refresh Images
+            </button>
           </div>
         </div>
       </div>
-
-      <div className="container d-flex align-items-center justify-content-center justify-content-center flex-wrap p-4">
-        <div className="row row-cols-3">
+      {/* React-Masonry */}
+      <div className="container d-flex align-items-center justify-content-center flex-wrap p-4">
+        <Masonry
+          breakpointCols={{ default: 3, 800: 2, 500: 1 }}
+          className="row row-cols-1 row-cols-md-3 my-masonry-grid"
+        >
           {images.map((image) => (
-            <div
-              className="col"
-              key={image.id}
-              style={{ position: "relative", overflow: "hidden" }}
-            >
-              <img
-                src={image.urls.regular}
-                alt={image.alt_description}
-                style={{
-                  objectFit: "cover",
-                  margin: "10px",
-                  height: "300px",
-                  width: "300px",
-                  maxWidth: "100%",
-                  borderRadius: "7px",
-                  transition: "transform 0.3s",
-                  cursor: "pointer",
-                }}
-                onClick={() => handleImageClick(image.urls.regular)}
-              />
-              <div className="user-overlay ">
-                <a
-                  href={image.user.links.html}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    textDecoration: "none",
-                    color: "#ca970a",
-                  }}
-                >
-                  {image.user.name}
-                </a>
+            <div className="col-12 col-md-4 my-masonry-grid_column">
+              <div className="image-container ">
+                <img
+                  src={image.urls.regular}
+                  alt={image.alt_description}
+                  className="img-fluid"
+                  onClick={() => handleImageClick(image.urls.regular)}
+                />
+                <div className="user-overlay">
+                  <a
+                    href={image.user.links.html}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      textDecoration: "none",
+                      color: "#ca970a",
+                    }}
+                  >
+                    {image.user.name}
+                  </a>
+                </div>
               </div>
             </div>
           ))}
-        </div>
+        </Masonry>
       </div>
-
       <Modal
         show={showModal}
         onHide={() => setShowModal(false)}
@@ -260,7 +201,7 @@ const RandomImageViews = () => {
             src={selectedImage}
             alt="Ampliación de imagen"
             className="modal-image"
-            style={{ width: "900px", height: "500px" }}
+            style={{ width: "100%" }}
           />
         </Modal.Body>
 
@@ -286,7 +227,7 @@ const RandomImageViews = () => {
               <div
                 className="card"
                 style={{
-                  width: "400px",
+                  width: "380px",
 
                   backgroundColor: "rgba(0, 0, 0, 0.3)",
                   color: "#ffffff",
@@ -515,18 +456,11 @@ const RandomImageViews = () => {
           </div>
         </div>
       </Modal>
-
+      Puedes aplicar propiedades de Bootstrap a tu footer de la siguiente
+      manera: jsx Copy code
       <footer
-        style={{
-          backgroundColor: "#1a1a1a",
-          color: "#ffffff",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "20px",
-          width: "100%",
-          marginTop: "40px",
-        }}
+        className="bg-dark text-white d-flex flex-column align-items-center p-4"
+        style={{ width: "100%" }}
       >
         <div
           className="social-icons"
@@ -534,29 +468,28 @@ const RandomImageViews = () => {
             display: "flex",
             justifyContent: "center",
             marginBottom: "20px",
-            color: "#ca970a",
           }}
         >
           <a
             href="https://www.linkedin.com/in/armando-mart%C3%ADnez-zambrano"
             target="_blank"
             rel="noreferrer"
-            style={{ color: "#ca970a", margin: "0 10px" }}
+            style={{ margin: "0 10px" }}
           >
             <ion-icon
               name="logo-linkedin"
-              style={{ fontSize: "32px" }}
+              style={{ fontSize: "32px", color: "#ca970a" }}
             ></ion-icon>
           </a>
           <a
             href="https://github.com/Alemar16"
             target="_blank"
             rel="noreferrer"
-            style={{ color: "#ca970a", margin: "0 10px" }}
+            style={{ margin: "0 10px" }}
           >
             <ion-icon
               name="logo-github"
-              style={{ fontSize: "32px" }}
+              style={{ fontSize: "32px", color: "#ca970a" }}
             ></ion-icon>
           </a>
         </div>
