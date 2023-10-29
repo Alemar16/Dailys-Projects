@@ -5,6 +5,7 @@ import { Modal } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Masonry from "react-masonry-css";
+import logoRandom from "./images/logo-Randon.svg"
 
 import "./style.css"; // Importa el archivo de estilos CSS
 
@@ -113,13 +114,18 @@ const RandomImageViews = () => {
         opacity: "1",
       }}
     >
-      <div className="container-title mb-3">
-        <h1 className="title">
-          Random <br /> Image
-          <br />
-          Gallery
-        </h1>
-        <div>
+      <div className="container-title mb-3 d-flex row">
+        <div className="logo-title col d-flex" style={{ position: "relative" }}>
+          <img src={logoRandom} alt="logo page" />
+          <h1 className="title" style={{ position: "relative", zIndex: "2" }}>
+            <span className="title-images">Random</span> <br />{" "}
+            <span style={{ lineHeight: "0.5" }}>Images</span>
+            <br />
+            <span style={{ lineHeight: "0.5" }}>Gallery</span>
+          </h1>
+        </div>
+
+        <div className="col">
           <p className="description">
             Welcome to our{" "}
             <span className="highlight">Random Image Gallery</span>
@@ -161,7 +167,10 @@ const RandomImageViews = () => {
           className="row row-cols-1 row-cols-md-3 my-masonry-grid"
         >
           {images.map((image) => (
-            <div className="col-12 col-md-4 my-masonry-grid_column">
+            <div
+              key={image.id}
+              className="col-12 col-md-4 my-masonry-grid_column"
+            >
               <div className="image-container ">
                 <img
                   src={image.urls.regular}
