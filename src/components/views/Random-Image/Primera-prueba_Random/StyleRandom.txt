@@ -1,0 +1,360 @@
+.container-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#search-input {
+  padding: 0.8em 1em;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  flex: 1;
+}
+
+#search-button,
+#refreshButton {
+  padding: 0.8em 1em;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-weight: 300;
+  font-size: 18px;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+#search-button {
+  background-color: #ca970a;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
+  margin-right: 5px;
+}
+
+#refreshButton {
+  background-color: #ca970a;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+#refreshButton:hover {
+  animation: sh0 0.5s ease-in-out both;
+}
+
+/* Resto de tu código de animación... */
+
+@keyframes sh0 {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: rotate(7deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-7deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+#refreshButton:hover span {
+  animation: storm 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+#refreshButton::before,
+#refreshButton::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+  z-index: -1;
+  transform: translate(100%, -25%) translate3d(0, 0, 0);
+}
+
+#refreshButton:hover::before,
+#refreshButton:hover::after {
+  opacity: 0.15;
+  transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+#refreshButton:hover::before {
+  transform: translate3d(50%, 0, 0) scale(0.9);
+}
+
+#refreshButton:hover::after {
+  transform: translate(50%, 0) scale(1.1);
+}
+
+
+======================================================
+
+
+
+segundo estilos
+
+
+/* Importa la fuente "Playfair Display" para el título */
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap');
+
+/* Importa la fuente "Open Sans" para el párrafo */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+/* Estilos para el título y el párrafo */
+.container-title {
+  text-align: left;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ca970a;
+  font-family: "Playfair Display", serif;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.description {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #ca970a;
+  font-weight: 700;
+}
+
+
+
+
+/* Alineación del título a la izquierda */
+
+
+/* Estilos para el título y la descripción */
+.title {
+  font-family: 'Fuente de Google', sans-serif; /* Reemplaza 'Fuente de Google' con el nombre de la fuente que desees importar */
+  font-size: 2rem;
+  color: #ca970a; /* Color amarillo */
+}
+
+.description {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+#search-input {
+
+  min-width: 150px; /* Ancho mínimo */
+  max-width: 300px; /* Ancho máximo */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+/* Estilos para el botón de búsqueda y el botón de actualización */
+.btn-primary {
+  background-color: #ca970a; /* Color amarillo llamativo */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 12px 20px; /* Más espacio interno */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary {
+  background-color: #2d2d2d; /* Color de fondo más oscuro para el botón Refresh */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 12px 20px; /* Más espacio interno */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #ca850a; /* Cambia el color al pasar el mouse para el botón de búsqueda */
+}
+
+.btn-secondary:hover {
+  background-color: #3d3d3d; /* Cambia el color al pasar el mouse para el botón Refresh */
+}
+
+/* Estilos para el masonry */
+.my-masonry-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -25px; /* Ajusta el margen según tus preferencias */
+}
+
+.my-masonry-grid_column {
+  flex: 1;
+  padding: 13px 1px; /* Ajusta el relleno según tus preferencias */
+  box-sizing: border-box;
+}
+
+.my-masonry-grid_column > div {
+  margin-bottom: 2px; /* Espacio entre las imágenes */
+}
+
+/* Opcional: Ajusta el tamaño de las imágenes para que sean más compactas */
+@media screen and (min-width: 768px) {
+  .my-masonry-grid_column {
+    width: 100%;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  border: #333 1px solid;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+  
+  background: rgba(255, 255, 255, 0.158);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.185);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 12px;
+  border: 1px RGBA sólido (255, 255, 213, 0.3209219);
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border: 0.px solid #ddd; /* Borde del contenedor */
+  border-radius: 8px; /* Redondea las esquinas */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra con efecto de relieve más sutil */
+}
+
+.image-container img {
+  width: 100%; /* Asegura que la imagen llene todo el contenedor */
+  height: auto;
+  display: block;
+}
+
+
+/* Opcional: Estilo de superposición en hover */
+.my-masonry-grid_column .image-container {
+  position: relative;
+}
+
+.my-masonry-grid_column .image-container .user-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fondo negro transparente */
+  color: white;
+  padding: 10px; /* Relleno moderado */
+  opacity: 1; /* Visible por defecto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%; /* Ancho igual al de la imagen */
+  transition: opacity 0.2s;
+}
+
+.my-masonry-grid_column .image-container .image {
+  transition: transform 0.2s;
+}
+
+.my-masonry-grid_column .image-container:hover .user-overlay:not(:hover) {
+  opacity: 0; /* Se desvanece en hover, excepto si se hace hover en el .user-overlay */
+}
+
+.my-masonry-grid_column .image-container:hover .image {
+  transform: scale(1.1); /* Aumenta el tamaño de la imagen al hacer hover */
+}
+
+.my-masonry-grid_column .image-container .user-overlay a {
+  color: #ca970a;
+  text-decoration: none;
+}
+
+
+=====================================================
+estilos para container title
+
+ <div className="container-title mb-3">
+        <h1 className="title">
+          Random <br /> Image
+          <br />
+          Gallery
+        </h1>
+        <div>
+          <p className="description">
+            Welcome to our{" "}
+            <span className="highlight">Random Image Gallery</span>
+            .<br /> Explore our extensive collection of carefully curated
+            high-quality photographs to inspire and delight.
+          </p>
+          <div className="container-button d-flex justify-content-end align-items-center my-4">
+            <div className="input-group">
+              <input
+                type="text"
+                id="search-input"
+                className="form-control"
+                placeholder="Search for a photo"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button
+                id="search-button"
+                className="btn btn-primary"
+                onClick={handleSearch}
+              >
+                Search
+              </button>
+            </div>
+            <button
+              id="refreshButton"
+              className="btn btn-secondary"
+              onClick={handleRefreshImages}
+            >
+              Refresh Images
+            </button>
+          </div>
+        </div>
+      </div>
