@@ -1,6 +1,8 @@
 
-/* Importa la fuente "Playfair Display" para el título */
+/* Importa las fuentes de Google Fonts "Playfair Display" para el título */
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Chakra+Petch:wght@300&family=Dancing+Script&family=Gloria+Hallelujah&family=Great+Vibes&family=Josefin+Slab:wght@100&family=Lobster&family=Pacifico&display=swap');
 
 /* Importa la fuente "Open Sans" para el párrafo */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
@@ -10,22 +12,55 @@
   text-align: left;
   padding: 20px;
   background-color: #1a1a1a;
-  color: #ca970a;
-  font-family: "Playfair Display", serif;
+  
+}
+
+.logo-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo-title img {
+  width: 180px;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 700;
+  color: #ca970a;
+  font-family: "Black Ops One", serif;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 2px #000000;
   line-height: 1.2;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
+  
+  /* Ajusta el espaciado a la izquierda para la alineación */
+}
+.title-images {
+  /* font-family: "Chakra Petch", serif; */
+  font-family: "Gloria Hallelujah", serif;
+  text-shadow: 2px 2px 2px #000000, 2px 2px 3px #ffffff;
+  font-size: 3rem;
+  color: brown;
+  display: block;
+}
+
+.title br {
+  display: none;
+}
+
+.title span {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .description {
   font-family: "Open Sans", sans-serif;
   font-size: 1.2rem;
+  font-weight: bold;
+  color: #b3b2ac;
+  text-shadow: 2px 2px 2px #000000;
   line-height: 1.6;
 }
 
