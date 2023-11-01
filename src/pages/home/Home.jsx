@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import image1 from "../../assets/images/bootstrap-themes.png";
 import imageCard1 from "../../assets/images/images-practice/image1.png";
+import imageCard2 from "../../assets/images/images-practice/image2.jpeg";
 import "./home.css";
 import imageHtml from "../../assets/icons/html.png";
 import imageCss from "../../assets/icons/css.png";
@@ -148,7 +149,7 @@ const Home = () => {
               <div className="image-container">
                 <img
                   className="bd-placeholder-img card-img-top rounded-top"
-                  src={imageCard1}
+                  src={imageCard2}
                   width="100%"
                   height="100%"
                 />
@@ -156,12 +157,13 @@ const Home = () => {
 
               <div className="card-body">
                 <h4 className="card-title fw-bold shadow py-2 rounded">
-                  Extensive Cards
+                  Random Images Gallery
                 </h4>
                 <p className="card-text" style={{ fontSize: "14px" }}>
-                  ExtensiveCards is a React component, click transitions via
-                  useEffect. It showcases image and title cards, stylized with
-                  CSS and Bootstrap 5.
+                  It is an application that simulates an image gallery with the
+                  option to search on the Unsplash platform for a large
+                  resolution image randomly, in addition, it also has a search
+                  engine by words.
                 </p>
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="btn-group">
