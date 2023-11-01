@@ -104,17 +104,9 @@ const RandomImageViews = () => {
 
   return (
     <div
-      className="container-page container-fluid p-0"
-      style={{
-        backgroundImage: `url(${imageBg})`,
-        backgroundSize: "100% 100%", // Estirar verticalmente
-        backgroundPosition: "center", // Asegura que la imagen esté centrada
-        backgroundRepeat: "no-repeat", // Evita la repetición de la imagen
-        minHeight: "100vh",
-        opacity: "1",
-      }}
+      className="container-page d-flex flex-column  p-0"
     >
-      <div className="container-title mb-3 d-flex row">
+      <div className="container-title mb-3 d-flex row justify-content-center " style={{ width: "100%" }}>
         <div className="logo-title col d-flex" style={{ position: "relative" }}>
           <img src={logoRandom} alt="logo page" />
           <h1 className="title" style={{ position: "relative", zIndex: "2" }}>
@@ -125,19 +117,19 @@ const RandomImageViews = () => {
           </h1>
         </div>
 
-        <div className="col">
+        <div className="col p-0 ">
           <p className="description">
             Welcome to our{" "}
             <span className="highlight">Random Image Gallery</span>
             .<br /> Explore our extensive collection of carefully curated
             high-quality photographs to inspire and delight.
           </p>
-          <div className="container-button d-flex justify-content-between align-items-center my-4">
+          <div className="container-button d-flex justify-content-between my-4" style={{ alignItems: "center" }}>
             <div className="input-group">
               <input
                 type="text"
                 id="search-input"
-                className="form-control"
+                className="form-control-sm"
                 placeholder="Search for a photo"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -465,8 +457,6 @@ const RandomImageViews = () => {
           </div>
         </div>
       </Modal>
-      Puedes aplicar propiedades de Bootstrap a tu footer de la siguiente
-      manera: jsx Copy code
       <footer
         className="bg-dark text-white d-flex flex-column align-items-center p-4"
         style={{ width: "100%" }}
