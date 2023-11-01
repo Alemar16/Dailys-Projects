@@ -198,14 +198,14 @@ const RandomImageViews = () => {
             src={selectedImage}
             alt="Ampliación de imagen"
             className="modal-image"
-            style={{ width: "100%" }}
+            style={{ width: "900px", height: "500px" }}
           />
         </Modal.Body>
 
         <div className="modal-info col" style={{ marginLeft: "20px" }}>
           <p>
             <button
-              className="btn"
+              className="info-btn"
               style={{ backgroundColor: "#ca970a" }}
               type="button"
               data-bs-toggle="collapse"
@@ -224,9 +224,9 @@ const RandomImageViews = () => {
               <div
                 className="card"
                 style={{
-                  width: "380px",
+                  width: "400px",
 
-                  backgroundColor: "rgba(0, 0, 0, 0.3)",
+                  backgroundColor: "rgba(0, 0, 0, 1)",
                   color: "#ffffff",
                   boxShadow: "rgba(255, 255, 255, 0.5) 0px 0px 20px",
                 }}
@@ -417,11 +417,7 @@ const RandomImageViews = () => {
 
                         <div className="artist-buttons d-flex justify-content-between">
                           <a
-                            className="btn-profile"
-                            style={{
-                              backgroundColor: "#ca970a",
-                              border: "1px solid #ca970a",
-                            }}
+                            className="button-style btn-profile"
                             href={image.links.html}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -430,11 +426,7 @@ const RandomImageViews = () => {
                           </a>
 
                           <a
-                            className="btn"
-                            style={{
-                              backgroundColor: "#ca970a",
-                              border: "1px solid #ca970a",
-                            }}
+                            className="button-style btn-download"
                             href={image.links.download}
                             onClick={() =>
                               handleImageDownload(image.links.download_location)
