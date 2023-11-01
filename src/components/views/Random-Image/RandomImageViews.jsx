@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { createApi } from "unsplash-js";
-import imageBg from "../../../Practice-Components/Random-Image/BasicAplication/images/pexel-bg.jpg";
 import { Modal } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -140,7 +139,7 @@ const RandomImageViews = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button class="button" onClick={handleSearch}>
+                <button className="button" onClick={handleSearch}>
                   Search
                 </button>
               </div>
