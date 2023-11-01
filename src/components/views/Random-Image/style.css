@@ -3,7 +3,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Chakra+Petch:wght@300&family=Dancing+Script&family=Gloria+Hallelujah&family=Great+Vibes&family=Josefin+Slab:wght@100&family=Lobster&family=Pacifico&display=swap");
 
 .container-page {
-  background-image: url("../../../Practice-Components/Random-Image/BasicAplication/images/pexel-bg.jpg");
+  /* background-image: url("../../../Practice-Components/Random-Image/BasicAplication/images/pexel-bg.jpg"); */
+  background: #ca970a;
+    /* Fallback for browsers that don't support gradients */
+    background: linear-gradient(to bottom,#333, #ca970a );
+    /* Standard syntax for browsers that support gradients */
   background-size: contain;
   background-position: center;
   min-height: 100vh;
