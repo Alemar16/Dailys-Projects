@@ -5,7 +5,7 @@ import { Modal } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Masonry from "react-masonry-css";
-import logoRandom from "./images/logo-Randon.svg"
+import logoRandom from "./images/logo-Randon.svg";
 
 import "./style.css"; // Importa el archivo de estilos CSS
 
@@ -103,10 +103,11 @@ const RandomImageViews = () => {
   };
 
   return (
-    <div
-      className="container-page d-flex flex-column  p-0"
-    >
-      <div className="container-title mb-3 d-flex row justify-content-center " style={{ width: "100%" }}>
+    <div className="container-page d-flex flex-column  p-0">
+      <div
+        className="container-title mb-3 d-flex row justify-content-center "
+        style={{ width: "100%" }}
+      >
         <div className="logo-title col d-flex" style={{ position: "relative" }}>
           <img src={logoRandom} alt="logo page" />
           <h1 className="title" style={{ position: "relative", zIndex: "2" }}>
@@ -124,36 +125,31 @@ const RandomImageViews = () => {
             .<br /> Explore our extensive collection of carefully curated
             high-quality photographs to inspire and delight.
           </p>
-          <div className="container-button d-flex justify-content-between my-4" style={{ alignItems: "center" }}>
-            <div className="input-group">
-              <input
-                type="text"
-                id="search-input"
-                className="form-control-sm"
-                placeholder="Search for a photo"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <button
-                id="search-button"
-                className="btn btn-primary"
-                onClick={handleSearch}
-              >
-                Search
+        </div>
+
+        <div className="row justify-content-center">
+          <div className="col-lg-6 col-md-8">
+            <div className="d-flex flex-column-reverse flex-md-row justify-content-center align-items-center gap-5">
+              <button className="refresh-button" onClick={handleRefreshImages}>
+                Refresh Images
               </button>
+              <div className="input-container">
+                <input
+                  type="text"
+                  placeholder="Search for a photo"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button class="button" onClick={handleSearch}>
+                  Search
+                </button>
+              </div>
             </div>
-            <button
-              id="refreshButton"
-              className="btn btn-secondary"
-              onClick={handleRefreshImages}
-            >
-              Refresh Images
-            </button>
           </div>
         </div>
       </div>
       {/* React-Masonry */}
-      <div className="container d-flex align-items-center justify-content-center flex-wrap p-4">
+      <div className="container d-flex align-items-center justify-content-center flex-wrap p-4 mb-5">
         <Masonry
           breakpointCols={{ default: 3, 800: 2, 500: 1 }}
           className="row row-cols-1 row-cols-md-3 my-masonry-grid"
