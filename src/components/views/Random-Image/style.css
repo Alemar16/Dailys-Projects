@@ -1,18 +1,21 @@
+/* Importa las fuentes de Google Fonts  */
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Chakra+Petch:wght@300&family=Dancing+Script&family=Gloria+Hallelujah&family=Great+Vibes&family=Josefin+Slab:wght@100&family=Lobster&family=Pacifico&display=swap");
 
-/* Importa las fuentes de Google Fonts "Playfair Display" para el título */
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Chakra+Petch:wght@300&family=Dancing+Script&family=Gloria+Hallelujah&family=Great+Vibes&family=Josefin+Slab:wght@100&family=Lobster&family=Pacifico&display=swap');
 
-/* Importa la fuente "Open Sans" para el párrafo */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+.container-page {
+  background-image: url("../../../Practice-Components/Random-Image/BasicAplication/images/pexel-bg.jpg");
+  background-size: contain;
+  background-position: center;
+  min-height: 100vh;
+}
 
 /* Estilos para el título y el párrafo */
 .container-title {
-  text-align: left;
-  padding: 20px;
-  background-color: #1a1a1a;
-  
+  text-align: center;
+  padding: 30px;
+
+ 
 }
 
 .logo-title {
@@ -22,7 +25,7 @@
 }
 
 .logo-title img {
-  width: 180px;
+  width: 140px;
 }
 
 .title {
@@ -34,7 +37,7 @@
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
-  
+
   /* Ajusta el espaciado a la izquierda para la alineación */
 }
 .title-images {
@@ -56,26 +59,29 @@
 }
 
 .description {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.2rem;
+  font-family: "Gloria Hallelujah", sans-serif;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #b3b2ac;
   text-shadow: 2px 2px 2px #000000;
   line-height: 1.6;
+  margin-top: 30px;
+ margin-left: 20px;
 }
 
 .highlight {
   color: #ca970a;
   font-weight: 700;
+  text-shadow: 2px 2px 2px #000000, 2px 2px 3px #ffffff;
 }
-
-
-
+.highlight:hover {
+  color: brown;
+}
 
 .my-masonry-grid {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -25px; /* Ajusta el margen según tus preferencias */
+  margin: 0 -25px; 
 }
 
 .my-masonry-grid_column {
@@ -104,7 +110,7 @@
   border: #333 1px solid;
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
-  
+
   background: rgba(255, 255, 255, 0.158);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   backdrop-filter: blur(16px) saturate(180%);
@@ -120,7 +126,7 @@
 .image-container {
   position: relative;
   overflow: hidden;
-  border: 0.px solid #ddd; /* Borde del contenedor */
+  border: 0px solid #ddd; /* Borde del contenedor */
   border-radius: 8px; /* Redondea las esquinas */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra con efecto de relieve más sutil */
 }
@@ -130,7 +136,6 @@
   height: auto;
   display: block;
 }
-
 
 /* Opcional: Estilo de superposición en hover */
 .my-masonry-grid_column .image-container {
@@ -170,5 +175,3 @@
   color: #ca970a;
   text-decoration: none;
 }
-
-
